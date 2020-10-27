@@ -1,5 +1,6 @@
 body{
-    overflow: hidden;
+	//overflow: hidden;
+	box-sizing: border-box;
 }
 section div{
     display: flex;
@@ -11,9 +12,6 @@ section div{
 
 .fa.fa-heart:hover{
     cursor: pointer;
-}
-body {
-    background: #ecf3f3;
 }
 
 .particle {
@@ -38,4 +36,37 @@ body {
 		transform: translate3d((random(90) * 1vw), (random(90) * 1vh), (random(100) * 1px));
 		background: hsl(random(360), 70%, 50%);
 	}
+}
+
+//how the starts will be
+.star{
+	color: goldenrod;
+	font-size: 10rem;
+	padding: 0 1rem;
+}
+
+//star ouline with unicode
+.star::before{
+	content: '\2606';
+	//touch me
+	cursor: pointer;
+}
+
+//filled star
+.star.rated::before{
+	content: '\2605';
+}
+//container star to count the stars rated with after pseudo
+.stars{
+	counter-reset: rateme 0;
+	font-size: 2rem;
+	font-weight: bolder;
+}
+//when they get hit, count them
+.star.rated{
+	counter-increment:  rateme 1;
+}
+//show me the way
+.stars::after{
+	content: counter(rateme) '/5';
 }

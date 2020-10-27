@@ -1,59 +1,54 @@
 //"...y eres como una balanza con las pesas colgando por dentro..."(Radio Futura, 37 grados)
 "use strict"
 
-let oneOf = document.querySelector('#the1');
-let restOf = document.querySelectorAll('.fa.fa-heart');
 
-//handlers
 
-console.log(restOf);
-restOf.forEach((e=>{
-    e.classList.add('fa-2x');
-}));
-//get all the hearts
-let list = ["the1", "the2", "the3", "the4", "the5"];
+//getter all hearts other way
+//when all is in place... 
+document.addEventListener('DOMContentLoaded', function(){
 
-list.forEach(function(e){
-    document.getElementById(e).addEventListener('pointerenter',  function()  {
+    //get them all
+    let allStars = document.querySelectorAll('.star');
+    //loop though them if anyone is going to do click, because will activate javascript
+    allStars.forEach(function(e){
 
-        let bigger = document.getElementById(e).className;
-        if(bigger.includes('fa-2x')){
-        document.getElementById(e).classList.remove('fa-2x');
-        document.getElementById(e).classList.add('fa-3x');
-        }
-    });
-    document.getElementById(e).addEventListener('pointerout',  function()  {
-
-        let smaller = document.getElementById(e).className;
-        if(smaller.includes('fa-3x')){
-        document.getElementById(e).classList.remove('fa-3x');
-        document.getElementById(e).classList.add('fa-2x');
-        }
+        e.addEventListener('click', myRating);
     });
 
-})
+    let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+    let target = allStars[rating - 1];
+    target.dispatchEvent(new MouseEvent('click'));
 
-//loop through all of them
-list.forEach(function(e) {
+});
 
-  
-    //get a hold in each of them
-    document.getElementById(e).addEventListener('click',function(){
-        
-        let heartsClass = document.getElementById(e).className;
-        //add classes if
-        if(heartsClass.includes("unchecked")) {
-            //like the forms remove one, add the other
-            document.getElementById(e).classList.remove("unchecked");
-            document.getElementById(e).classList.add("checked");
-            console.log(this.classList);
-        } else {
+function myRating(elem){
 
-            document.getElementById(e).classList.remove("checked");
-            document.getElementById(e).classList.add("unchecked");
-            console.log(this.classList);
+    let span = elem.currentTarget;
+    let stars = document.querySelectorAll('.star');
+    //you'll tell me the true
+    let match = false;
+    //counter
+    let num = 0;
+    
+    //loop through them will you?!
+    stars.forEach(function(everyStar, index){
+
+        if(match){
+            
+            everyStar.classList.remove('rated');
+
+        }else {
+
+            everyStar.classList.add('rated');
         }
+        //to whom am I looking at if it was clicked
+        if (everyStar === span){
 
+            match = true;
+            num = index + 1;
+        }
     });
 
-})
+
+    document.querySelector('.stars').setAttribute('data-rating', num);
+}
