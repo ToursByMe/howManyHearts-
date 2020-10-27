@@ -5,10 +5,13 @@
 
 //getter all hearts other way
 //when all is in place... 
+
+
 document.addEventListener('DOMContentLoaded', function(){
 
     //get them all
     let allStars = document.querySelectorAll('.star');
+
     //loop though them if anyone is going to do click, because will activate javascript
     allStars.forEach(function(e){
 
@@ -41,6 +44,7 @@ function myRating(elem){
 
             everyStar.classList.add('rated');
         }
+
         //to whom am I looking at if it was clicked
         if (everyStar === span){
 
@@ -52,3 +56,20 @@ function myRating(elem){
 
     document.querySelector('.stars').setAttribute('data-rating', num);
 }
+
+        //just the boton
+        let button = document.querySelector('#deleteMe');
+
+        button.addEventListener('click', deleteStars);
+
+        function deleteStars(){
+
+            console.log('delete works');
+
+            let allStars = document.querySelectorAll('.star');
+
+            allStars.forEach(function(e){
+
+                e.classList.remove('rated');
+            });
+        }
