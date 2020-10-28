@@ -76,6 +76,3 @@ function myRating(elem){
                 e.classList.remove('rated');
             });
         }
-
-        /****************************documentacion ***************/
-        //https://www.youtube.com/watch?v=dPCj6Qkq13Y
