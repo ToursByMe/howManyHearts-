@@ -2,10 +2,8 @@
 "use strict"
 
 
-
 //getter all hearts other way
 //when all is in place... 
-
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -18,8 +16,13 @@ document.addEventListener('DOMContentLoaded', function(){
         e.addEventListener('click', myRating);
     });
 
+    //get the number of data-rating
     let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
-    let target = allStars[rating - 1];
+
+    //data-rating gives us a number but NOT the position, therefore minus 1
+    let target = allStars[rating - 1];//-1 so I get the index
+
+    //we pretended it was CLICKED!
     target.dispatchEvent(new MouseEvent('click'));
 
 });
