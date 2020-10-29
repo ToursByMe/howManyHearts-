@@ -77,4 +77,4 @@ function myRating(elem){
                 e.classList.remove('rated');
             });
         }
-
+        
