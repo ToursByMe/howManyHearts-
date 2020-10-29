@@ -51,6 +51,7 @@ section div{
 	//touch me
 	cursor: pointer;
 }
+//passing the mouse
 .star:hover::before{
 	content: '\2605';
 	color: rgb(218, 137, 32);
@@ -74,3 +75,15 @@ section div{
 .stars::after{
 	content: counter(rateme) '/5';
 }
+// I pass from right to left
+//has to be used WITH reverse() in the js document!!!
+.stars {
+	unicode-bidi: normal;
+	direction: rtl;
+}
+//color them as we pass by
+.stars .star:hover::before,
+.stars .star:hover ~ .star::before {
+	content: '\2605';
+} 
+
