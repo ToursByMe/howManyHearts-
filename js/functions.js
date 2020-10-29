@@ -1,6 +1,7 @@
 //"...y eres como una balanza con las pesas colgando por dentro..."(Radio Futura, 37 grados)
 "use strict"
 
+
 //getter all hearts other way
 //when all is in place... 
 
@@ -29,9 +30,12 @@ function myRating(elem){
 
     let span  = elem.currentTarget;
     let stars = document.querySelectorAll('.star');
+
+    //convert Nodelist to an array
     let starArr = Array.from(stars);
     starArr     = starArr.reverse();
     console.log(starArr)
+
     //you'll tell me the true
     let match = false;
     //counter
@@ -77,4 +81,3 @@ function myRating(elem){
                 e.classList.remove('rated');
             });
         }
-        
